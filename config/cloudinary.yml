@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dqdpfuid7
+  api_key: '361264971939553'
+  api_secret: Y0RwMA7aFftny_wgPkRYRA3SkFA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dqdpfuid7
+  api_key: '361264971939553'
+  api_secret: Y0RwMA7aFftny_wgPkRYRA3SkFA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dqdpfuid7
+  api_key: '361264971939553'
+  api_secret: Y0RwMA7aFftny_wgPkRYRA3SkFA
+  enhance_image_tag: true
+  static_image_support: false
