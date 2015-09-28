@@ -49,6 +49,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'rails_12factor'
+
 gem 'devise', '~> 3.4.0'
 
 gem 'cloudinary'

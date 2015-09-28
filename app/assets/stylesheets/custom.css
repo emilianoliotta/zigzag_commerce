@@ -1,0 +1,192 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+
+}
+
+.menu-link {
+    display: block;
+    margin-right: 1em;
+}
+
+.category-link {
+    display: block;
+    width: 230px;
+}
+
+html *
+{
+  /*
+   font-size: 1em !important;
+   color: #000 !important;
+
+   font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+   */
+   font-family: 'PT Sans', sans-serif;
+}
+/*
+h1.title {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+
+}
+*/
+td{
+  vertical-align: middle;
+  text-align: center;
+}
+
+html{
+  height: 100%;
+}
+
+body{
+  padding-bottom: 5.5em;
+  min-height: 100%;
+  position: relative;
+  background-image: url("android2.jpg");
+  /*background-repeat:no-repeat;*/
+  background-size:cover;
+}
+
+body > footer{
+  background-color: aliceblue;
+  vertical-align: middle;
+  text-align: center;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  margin-bottom: 0.5em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+*,
+*:before,
+*:after {
+   box-sizing: border-box;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+input {
+  border-radius: 5px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.preview-img{
+  width: 70%;
+}
+
+.account-info {
+  padding: 20px 20px 0 20px;
+}
+.account-info label {
+  color: #395870;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.account-info input {
+  background: #fff;
+  border: 1px solid #c6c7cc;
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+  width: 100%;
+}
+.account-action {
+  background: #f0f0f2;
+  border-top: 1px solid #c6c7cc;
+  padding: 20px;
+}
+.account-action .btn {
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+  padding: 8px 16px;
+}
+.account-action label {
+  color: #7c7c80;
+  font-size: 12px;
+  float: left;
+  margin: 10px 0 0 20px;
+}
+
+
+/* =================== PANELES ====================
+   ================================================ */
+
+.panel-producto{
+  height: 200px;
+  overflow: hidden;
+}
+
+.panel-personal {
+  border-style: none;
+  box-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+}
+
+.panel-personal > .panel-heading {
+  color: black;
+  background-color: #C7CACB;
+}
+
+.panel-personal > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+
+.panel-personal ul > li blockquote{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.panel-personal .list-special .list-group-item:first-child{
+  border-top-width: 0px;
+}
+
+.panel-personal .list-special .list-group-item{
+  border-top-width: 3px;
+}
+
+.panel-personal .table{
+  margin-bottom: 0px;
+}
+
+.panel-personal .table > tbody > tr:first-child > td,
+.panel-personal .table > tr:first-child > td{
+  border-top-width: 0px;
+}
+
+/* ================================================
+   ================== FIN PANELES ================= */
+
+
+.estructura{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+.text-ellipsis{ /* Cuando hay overflow, en vez de saltar de línea, se trunca el texto y se agregan ... */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.negrita{
+  font-weight: bold;
+}

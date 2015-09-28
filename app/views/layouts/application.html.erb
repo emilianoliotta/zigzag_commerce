@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
+
+
 <head>
-  <title>ZigzagCommerce</title>
+  <title>ZigZag Commerce</title>
+  <meta charset="utf-8" />
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 </head>
+
+
 <body>
 
-<%= yield %>
+	<%= render 'layouts/header' %>
+
+	<%= yield %>
+
+
+
+
+<footer>
+  <span>
+    Desarrollado por <span class="negrita">ZigZagCommerce</span><span style="padding-left:1em;">-</span><span style="padding-left:1em;">2015</span>
+  </span>
+</footer>
 
 </body>
 </html>

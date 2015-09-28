@@ -1,0 +1,14 @@
+/*
+    Clases relacionadas a la sidebar (barra lateral) de la vista Welcome#index
+*/
+
+.sidebar-nav {
+	padding-top: 1em;
+	max-height: 35em;
+	overflow: auto;
+}
+
+.sidebar-nav-right {
+	padding-top: 1em;
+	overflow: auto;
+}
