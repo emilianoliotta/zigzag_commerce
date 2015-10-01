@@ -1,4 +1,4 @@
-Rails.application.configure do
+Rails.application.configure do 
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -22,7 +22,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.serve_static_files = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -76,4 +76,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.assets.initialize_on_precompile = false
+
+  config.assets.precompile += %w(custom.css)
+
+  # Host por defecto utilizado para formar las URL que pueden ser especificadas en
+  # los emails enviados. Es importante porque se deben enviar URL absolutas.
+  config.action_mailer.default_url_options = { host: "zigzag-commerce.herokuapp.com" }
 end
