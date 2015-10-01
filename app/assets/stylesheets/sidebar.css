@@ -4,11 +4,18 @@
 
 .sidebar-nav {
 	padding-top: 1em;
-	max-height: 35em;
-	overflow: auto;
+	overflow: hidden;
 }
 
 .sidebar-nav-right {
+	margin-right: 5em;
+	position: absolute;
 	padding-top: 1em;
 	overflow: auto;
 }
+
+.sidebar-nav-products {
+	padding-top: 1em;
+	overflow: visible;
+}
+

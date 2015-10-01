@@ -1,2 +1,41 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<div>
+  <ol class="breadcrumb">
+    <li><%=link_to "Inicio", root_path %></li>
+    <li><%=link_to "Productos", products_path %></li>
+    <li class="active">Nuevo producto</li>
+  </ol>
+</div>
+
+<div class="container">
+	<div class = "panel panel-personal">
+		<div class = "panel-heading">
+			<h2 class = "panel-title">Nuevo producto</h2>
+		</div>
+		<div class = "panel-body">
+			<%= form_for @product, url:{ action: "create"}, html: {multipart: true} do |f| %>
+				<div class="form-group"><%= f.text_field :title, placeholder: "Título", required: "required", class: "form-control", maxlength: 255 %>
+				</div>
+				<div class="form-group"><%= f.text_area :description, rows:"6", cols:"100%", :placeholder => "Descripción", :required => "required", class:"form-control", maxlength:"8192" %>
+		     	</div>
+		     	<div class="form-group"><%= f.number_field :price, rows:"6", cols:"100%", :placeholder => "Precio", :required => "required", class:"form-control", :step => 0.01 %>
+		     	</div>
+		     	<div class="form-group negrita">Categoría de producto: </span></div>
+		     	<div class="form-group">
+					<%= f.select :category_id, options_from_collection_for_select(@categories, "id", "name", selected: (@product.category_id.present? ? @product.category_id : nil)), {}, {class: "form-control", style: "width: auto"} %>
+				</div>
+				<div class="form-group negrita" style="padding-top:1em;"><span>Ubicación: </span></div>
+		     	<div class="form-group"><%= f.text_field :location, placeholder: "Ubicación", required: "required", class: "form-control", maxlength: 255 %>
+				<div class="form-group negrita" style="padding-top:1em;"><span>Imágenes: </span></div>
+				<div class="form-group"><%= f.file_field :picture1, class:"form-control" %>
+		     	</div>
+		     	<div class="form-group"><%= f.file_field :picture2, class:"form-control" %>
+		     	</div>
+		     	<div class="form-group"><%= f.file_field :picture3, class:"form-control" %>
+		     	</div>
+		     	<div class="form-group"><%= f.file_field :picture4, class:"form-control" %>
+		     	</div>
+		     	<div class="form-group"><%= f.submit "Publicar", class:"btn btn-default pull-right" %></div>
+	  		<% end %>
+		</div>
+	</div>
+</div>

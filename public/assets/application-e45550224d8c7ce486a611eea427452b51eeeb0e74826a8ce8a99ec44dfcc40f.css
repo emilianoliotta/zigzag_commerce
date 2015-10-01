@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -6800,3 +6801,287 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+
+}
+
+.menu-link {
+    display: block;
+    margin-right: 1em;
+}
+
+.category-link {
+    display: block;
+    width: 230px;
+}
+
+html *
+{
+  /*
+   font-size: 1em !important;
+   color: #000 !important;
+
+   font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+   */
+   font-family: 'PT Sans', sans-serif;
+}
+/*
+h1.title {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+
+}
+*/
+td{
+  vertical-align: middle;
+  text-align: center;
+}
+
+html{
+  height: 100%;
+}
+
+body{
+  padding-bottom: 5.5em;
+  min-height: 100%;
+  position: relative;
+  background-image: url("android2.jpg");
+  /*background-repeat:no-repeat;*/
+  background-size:cover;
+}
+
+body > footer{
+  background-color: aliceblue;
+  vertical-align: middle;
+  text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+*,
+*:before,
+*:after {
+   box-sizing: border-box;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+input {
+  border-radius: 5px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.preview-img{
+  width: 70%;
+}
+
+.account-info {
+  padding: 20px 20px 0 20px;
+}
+.account-info label {
+  color: #395870;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.account-info input {
+  background: #fff;
+  border: 1px solid #c6c7cc;
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+  width: 100%;
+}
+.account-action {
+  background: #f0f0f2;
+  border-top: 1px solid #c6c7cc;
+  padding: 20px;
+}
+.account-action .btn {
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+  padding: 8px 16px;
+}
+.account-action label {
+  color: #7c7c80;
+  font-size: 12px;
+  float: left;
+  margin: 10px 0 0 20px;
+}
+
+
+/* =================== PANELES ====================
+   ================================================ */
+
+.panel-producto{
+  height: 200px;
+  overflow: hidden;
+}
+
+.panel-personal {
+  border-style: none;
+  box-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+}
+
+.panel-personal > .panel-heading {
+  color: black;
+  background-color: #C7CACB;
+}
+
+.panel-personal > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+
+.panel-personal ul > li blockquote{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.panel-personal .list-special .list-group-item:first-child{
+  border-top-width: 0px;
+}
+
+.panel-personal .list-special .list-group-item{
+  border-top-width: 3px;
+}
+
+.panel-personal .table{
+  margin-bottom: 0px;
+}
+
+.panel-personal .table > tbody > tr:first-child > td,
+.panel-personal .table > tr:first-child > td{
+  border-top-width: 0px;
+}
+
+/* ================================================
+   ================== FIN PANELES ================= */
+
+
+.estructura{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+.text-ellipsis{ /* Cuando hay overflow, en vez de saltar de línea, se trunca el texto y se agregan ... */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.negrita{
+  font-weight: bold;
+}
+
+#categories{
+  overflow: hidden;
+}
+
+/* ==================  PRODUCTOS  =================
+   ================================================ */
+
+.main-product-image{
+  max-width: 100%;
+  max-height: 40em;
+}
+
+.secondary-product-image{
+  max-width: 100%;
+  max-height: 100%;
+}
+/* cyrillic-ext */
+
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/JX7MlXqjSJNjQvI4heMMGvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/vtwNVMP8y9C17vLvIBNZI_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/9kaD4V2pNPMMeUVBHayd7vY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/ATKpv8nLYAKUYexo8iqqrg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/*
+    Clases relacionadas a la sidebar (barra lateral) de la vista Welcome#index
+*/
+
+
+.sidebar-nav {
+	padding-top: 1em;
+	overflow: hidden;
+}
+
+.sidebar-nav-right {
+	margin-right: 5em;
+	position: absolute;
+	padding-top: 1em;
+	overflow: auto;
+}
+
+.sidebar-nav-products {
+	padding-top: 1em;
+	overflow: visible;
+}
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ *= require_fontfamily.css 
+ *= require_bootstrap
+ *= require_custom.css
+ *= require_sidebar.css
+ */
+

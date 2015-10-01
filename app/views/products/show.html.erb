@@ -1,2 +1,150 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div>
+  <ol class="breadcrumb">
+    <li><%=link_to "Inicio", root_path %></li>
+    <li><%=link_to "Productos", products_path %></li>
+    <li><%=link_to @category.name, products_path(:category_id => @category.id) %></li>
+    <li class="active"><%= @product.title %></li>
+  </ol>
+</div>
+
+<div class="container">
+      <div class = "row">
+        <div class="col-md-12"><h3><%= @product.title %></h3></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            <div class="sidebar-nav-products">
+                <div class="well">
+                  <!-- Imagen principal -->
+                  <div style='position:relative'>
+                      <% if @pictures.count > 0 %>
+                        <%= image_tag(@pictures.first.secure_url, alt: @product.title, class:"main-product-image center-block")%>
+                      <% else %>
+                         <%= image_tag("https://res.cloudinary.com/dqdpfuid7/image/upload/v1443571379/noimage_askejz.png", alt: @product.title, class:"main-product-image center-block")%>
+                      <%end%>
+                  </div>
+                  <div style="padding-top:1em"></div>
+                  <!-- Thumbnails -->
+                  <div class="row">
+                    <% if @pictures.count > 0 %>
+                      <% @pictures.each do |p| %>
+                        <div class="col-md-3" style='position:relative'>
+                          <%= link_to image_tag(p.secure_url, alt: "Abrir imagen", class:"secondary-product-image img-rounded"), p.secure_url %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+
+                  <!--Datos del vendedor-->
+                  <div class="panel panel-default" style="margin-top:1em;">
+                    <div class="panel-heading">
+                      <label>Datos del vendedor</label>
+                    </div>
+                    <div class="panel-body">
+                      <label>Publicado por: </label> <%= @product.user.email %><br>
+                      <label>Fecha de publicación: </label> <%= localize @product.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
+                      <label>Ubicación: </label> <%= @product.location %>
+                    </div>
+                  </div>
+
+                  <!-- Denunciar contenido indebido y puntajes -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Su denuncia será procesada por los administradores.">Contenido indebido</button>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="pull-right">
+                        <a class="btn btn-default btn" data-toggle="tooltip" data-placement="top" title="Me gusta" href="?like=1"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span class="badge"><%= @product.likes %></span></a>
+                        <a class="btn btn-default btn" data-toggle="tooltip" data-placement="top" title="No me gusta" href="?dislike=1"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><span class="badge"><%= @product.dislikes %></span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--/.well -->
+                </div>
+              <!--/sidebar-nav -->
+            </div>
+        </div>
+        <!--/span-->
+
+
+
+        <div class="col-md-8" style="padding-top:1em;">
+          <div class="well">
+            <% if user_signed_in? %>
+              <% if current_user.products.joins(@product) %>
+                <%= link_to "Eliminar producto", @product, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
+              <% end %>
+            <% end %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <label>Descripción del producto</label>
+              </div>
+              <div class="panel-body">
+                <%= @product.description %>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-body">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <span class="negrita" style="font-size:1.5em;">Precio unitario: $<%= @product.price %></span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="pull-right">
+                        <label>Cantidad de unidades: </label>
+                        <input type="number" name="quantity" min="1" max="10" value="1">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row" style="padding-top:0.3em;">
+                    <div class="col-md-12">
+                      <div class="pull-right">
+                        <a href="#" class="btn btn-primary" role="button">Agregar al carrito</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <!-- Preguntas -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <label>Preguntas</label>
+                </div>
+                <div class="panel-body">
+                  <form>
+                    <div class="form-group">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <label>¿Es ésta la primera pregunta?</label>
+                        </div>
+                      </div>
+                      <textarea class="form-control" rows="5" id="comment" placeholder="Escribe tu pregunta aquí."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success center-block">DEBES INICIAR SESION PARA PODER HACER COMENTARIOS</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <!--/span-->
+      </div>
+
+
+
+</div>
+<!--/.fluid-container-->

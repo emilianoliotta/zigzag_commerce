@@ -56,9 +56,9 @@ body > footer{
   background-color: aliceblue;
   vertical-align: middle;
   text-align: center;
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-  margin-bottom: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0em;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -189,4 +189,21 @@ input {
 
 .negrita{
   font-weight: bold;
+}
+
+#categories{
+  overflow: hidden;
+}
+
+/* ==================  PRODUCTOS  =================
+   ================================================ */
+
+.main-product-image{
+  max-width: 100%;
+  max-height: 40em;
+}
+
+.secondary-product-image{
+  max-width: 100%;
+  max-height: 100%;
 }
