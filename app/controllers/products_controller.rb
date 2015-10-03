@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
     if params[:category_id]
+      @category = Category.find(params[:category_id])
       @products = @products.where(category_id: params[:category_id])
     end
   end
