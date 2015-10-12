@@ -14,7 +14,7 @@
             <% if @orders.any? %>
               <table class="table table-bordered">
                 <tr>
-                  <th style="width:4em;"><a href="#">Vaciar</a></th>
+                  <th style="width:4em;"><%=link_to "Vaciar", orders_delete_all_path(current_user.id) %></th>
                   <th style="width:5em;">Id</th>
                   <th>Producto</th>
                   <th style="width:8em;">Cantidad</th>
@@ -25,9 +25,11 @@
                     <td>
                       <%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true">'.html_safe, ord, method: :delete %></td>
                     <td><%= ord.product.id %></td>
-                    <td><%= ord.product.title %></td>
+                    <td><%=link_to ord.product.title, ord.product %></td>
                     <td>
-                      <input type="number" name="quantity" min="1" max="10" value="1">
+                      <%= link_to "-", orders_decrement_quantity_path(ord.id), class:"btn btn-xs btn-default", style:"margin:0px" %>
+                      <span style="padding: 0em 0.4em; background-color: white; border: 1px solid #ccc; margin: 0px; vertical-align:middle;"><%= ord.quantity %></span>
+                      <%= link_to "+", orders_increment_quantity_path(ord.id), class:"btn btn-xs btn-default", style:"margin:0px" %>
                     </td>
                     <td><%= ord.product.price %></td>
                   </tr>
@@ -38,7 +40,7 @@
               <table class="table table-bordered">
                 <tr>
                   <th>Total</th>
-                  <th style="width:8em;">$495</th>
+                  <th style="width:8em;">$<%= @suma %></th>
                 </tr>
               </table>
             <% else %>
@@ -88,8 +90,6 @@
               <a class="btn btn-default pull-right" href="#" role="button">Completar compra</a>
             </div>
           <% end %>
-
-
 
         </div>
         <!--/span-->

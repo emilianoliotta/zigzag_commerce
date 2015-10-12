@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get 'products/show'
 
   devise_for :users
+
+  match 'orders/:id/increment_quantity' => 'orders#increment_quantity', as: :orders_increment_quantity, via: [:get]
+  match 'orders/:id/decrement_quantity' => 'orders#decrement_quantity', as: :orders_decrement_quantity, via: [:get]
+  match 'orders/:id/delete_all' => 'orders#delete_all', as: :orders_delete_all, via: [:get]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

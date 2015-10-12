@@ -72,7 +72,7 @@
         <div class="col-md-8" style="padding-top:1em;">
           <div class="well">
             <% if user_signed_in? %>
-              <% if current_user.products.joins(@product) %>
+              <% if current_user.products.where(id: @product.id).first %>
                 <%= link_to "Eliminar producto", @product, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
               <% end %>
             <% end %>
@@ -89,27 +89,40 @@
             <div class="row">
               <div class="panel panel-default">
                 <div class="panel-body">
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <span class="negrita" style="font-size:1.5em;">Precio unitario: $<%= @product.price %></span>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="pull-right">
-                        <label>Cantidad de unidades: </label>
-                        <input type="number" name="quantity" min="1" max="10" value="1">
+                  <% if @in_cart %>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <span class="negrita" style="font-size:1.5em;">Precio unitario: $<%= @product.price %></span>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="pull-right">
+                          <%= link_to "Producto en el carrito", orders_path, class:"btn btn-success" %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="row" style="padding-top:0.3em;">
-                    <div class="col-md-12">
-                      <div class="pull-right">
-                        <a href="#" class="btn btn-primary" role="button">Agregar al carrito</a>
+                  <% else %>  
+                    <%= form_tag new_order_path, method: :get %>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <span class="negrita" style="font-size:1.5em;">Precio unitario: $<%= @product.price %></span>
+                        </div>
+                        <%= hidden_field_tag "product", @product.id %>
+                        <div class="col-md-6">
+                          <div class="pull-right">
+                            <label>Cantidad de unidades: </label>
+                            <%= number_field_tag 'quantity', 1, in: 1...11, :required => "required", class:"form-control" %>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
+                      <div class="row" style="padding-top:0.3em;">
+                        <div class="col-md-12">
+                          <div class="pull-right">
+                            <%= submit_tag "Añadir al carrito", class:"btn btn-primary" %>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
                 </div>
               </div>
             </div>

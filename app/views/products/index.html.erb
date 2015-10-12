@@ -34,7 +34,12 @@
               </div>
               <div class = "panel-footer text-ellipsis">
                 <div class="text-center">
-                <a class="btn btn-primary btn-xs" href="login.html">Añadir al carrito</a></div>
+                  <% if user_signed_in? && current_user == p.user %>
+                    <%= link_to "Eliminar producto", p, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
+                  <% else %>
+                    <%= link_to "Añadir al carrito", new_order_path(product: p), class:"btn btn-success center-block" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

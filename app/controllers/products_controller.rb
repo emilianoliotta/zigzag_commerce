@@ -23,10 +23,17 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def show
+    @in_cart
     @product = Product.find(params[:id])
+    current_user.orders.each do |o|
+      if o.product == @product
+        @in_cart = 1
+      end
+    end
     if params[:like]
       @product.likes = @product.likes + 1
       @product.save
