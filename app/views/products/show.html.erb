@@ -49,15 +49,38 @@
 
                   <!-- Denunciar contenido indebido y puntajes -->
                   <div class="row">
-                    <div class="col-md-6">
-                      <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Su denuncia será procesada por los administradores.">Contenido indebido</button>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="pull-right">
-                        <a class="btn btn-default btn" data-toggle="tooltip" data-placement="top" title="Me gusta" href="?like=1"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span class="badge"><%= @product.likes %></span></a>
-                        <a class="btn btn-default btn" data-toggle="tooltip" data-placement="top" title="No me gusta" href="?dislike=1"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><span class="badge"><%= @product.dislikes %></span></a>
+                    <%= form_tag feedback_create_path, method: :get do %>
+                      <%= hidden_field_tag "product", @product.id %>
+                      <%= hidden_field_tag "positive", 0 %>
+                      <%= hidden_field_tag "negative", 0 %>
+                      <%= hidden_field_tag "inappropriate", 1 %>
+                      <div class="col-md-6">
+                        <button name="button" type="submit" class="btn btn-danger btn" data-toggle="tooltip" data-placement="top" title="Su denuncia será procesada por los administradores.">Contenido indebido</button>
                       </div>
-                    </div>
+                    <% end %>
+                      <div class="col-md-6">
+                        <div class="pull-right">
+                          <div class="col-md-6">
+                          <%= form_tag feedback_create_path, method: :get do %>
+                            <%= hidden_field_tag "product", @product.id %>
+                            <%= hidden_field_tag "positive", 1 %>
+                            <%= hidden_field_tag "negative", 0 %>
+                            <%= hidden_field_tag "inappropriate", 0 %>
+                      
+                            <button name="button" type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Me gusta"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span class="badge"><%= @likes %></span></button>
+                          <% end %>
+                          </div>
+                          <div class="col-md-6">
+                          <%= form_tag feedback_create_path, method: :get do %>
+                            <%= hidden_field_tag "product", @product.id %>
+                            <%= hidden_field_tag "positive", 0 %>
+                            <%= hidden_field_tag "negative", 1 %>
+                            <%= hidden_field_tag "inappropriate", 0 %>
+                            <button name="button" type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="No me gusta"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><span class="badge"><%= @dislikes %></span></button>
+                          <% end %>
+                          </div>
+                        </div>
+                      </div>
                   </div>
 
                   <!--/.well -->
@@ -101,7 +124,7 @@
                       </div>
                     </div>
                   <% else %>  
-                    <%= form_tag new_order_path, method: :get %>
+                    <%= form_tag new_order_path, method: :get do %>
                       <div class="row">
                         <div class="col-md-6">
                           <span class="negrita" style="font-size:1.5em;">Precio unitario: $<%= @product.price %></span>
@@ -122,6 +145,7 @@
                           </div>
                         </div>
                       </div>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

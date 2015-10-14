@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  positive: 1
+  negative: 1
+  inappropriate: 1
+
+two:
+  positive: 1
+  negative: 1
+  inappropriate: 1

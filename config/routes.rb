@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'feedback/create'
+
+  get 'feedback/destroy'
+
+  get 'feedback_controller/create'
+
+  get 'feedback_controller/destroy'
+
   get 'orders/index'
 
   root 'products#index'

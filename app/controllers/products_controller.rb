@@ -27,23 +27,29 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @in_cart
     @product = Product.find(params[:id])
-    current_user.orders.each do |o|
-      if o.product == @product
-        @in_cart = 1
+
+    @in_cart
+    if user_signed_in?
+      current_user.orders.each do |o|
+        if o.product == @product
+          @in_cart = 1
+        end
       end
     end
-    if params[:like]
-      @product.likes = @product.likes + 1
-      @product.save
+
+    @likes = 0
+    @dislikes = 0
+    @product.feedbacks.each do |f|
+      if f.positive == 1
+        @likes+=1
+      elsif f.negative == 1
+        @dislikes += 1
+      end
     end
-    if params[:dislike]
-      @product.dislikes = @product.dislikes + 1
-      @product.save
-    end
-    @category = Category.find(@product.category_id)
-    @pictures = Picture.where(product_id: @product.id)
+
+    @category = @product.category
+    @pictures = @product.pictures
   end
 
   def create
@@ -57,7 +63,7 @@ class ProductsController < ApplicationController
     price = params[:product][:price]
     location = params[:product][:location]
     # A la variable anteriormente creada le asigno el nuevo producto
-    @product = Product.create(title: title, description: description, category_id: category, location: location, price: price, likes: 0, dislikes: 0, user: current_user)
+    @product = Product.create(title: title, description: description, category_id: category, location: location, price: price, user: current_user)
 
     if picture1
   		hash = Cloudinary::Uploader.upload(picture1)
