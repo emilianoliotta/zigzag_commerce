@@ -159,17 +159,7 @@
                   <label>Preguntas</label>
                 </div>
                 <div class="panel-body">
-                  <form>
-                    <div class="form-group">
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          <label>¿Es ésta la primera pregunta?</label>
-                        </div>
-                      </div>
-                      <textarea class="form-control" rows="5" id="comment" placeholder="Escribe tu pregunta aquí."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success center-block">DEBES INICIAR SESION PARA PODER HACER COMENTARIOS</button>
-                  </form>
+                  <%= render 'disqus' %>
                 </div>
               </div>
             </div>
