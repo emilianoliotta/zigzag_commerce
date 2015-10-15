@@ -65,9 +65,10 @@ class ProductsController < ApplicationController
     description = params[:product][:description]
     category = params[:product][:category_id]
     price = params[:product][:price]
+    quantity = params[:product][:quantity]
     location = params[:product][:location]
     # A la variable anteriormente creada le asigno el nuevo producto
-    @product = Product.create(title: title, description: description, category_id: category, location: location, price: price, user: current_user)
+    @product = Product.create(title: title, description: description, category_id: category, location: location, price: price, quantity: quantity, user: current_user)
 
     if picture1
   		hash = Cloudinary::Uploader.upload(picture1)

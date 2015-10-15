@@ -6,6 +6,8 @@ class Product < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
 
+	validates :title, :description, :price, :quantity, :location, :category_id, :allow_blank => false, :allow_nil => false, :on => :create, presence: true
+
 
 	def self.search(query)
 		consulta1 = where('products.title ilike ? or products.description ilike ?', "%#{query}%", "%#{query}%")

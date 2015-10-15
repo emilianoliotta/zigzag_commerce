@@ -55,9 +55,11 @@ class OrdersController < ApplicationController
 
   def increment_quantity
     order = current_user.orders.find(params[:id])
-    if order.quantity < 10
+    if order.quantity < order.product.quantity
       order.quantity += 1
       order.save 
+    else
+      flash[:alert] = "Cantidad maxima alcanzada. Limite de stock."
     end
     redirect_to orders_index_path
   end

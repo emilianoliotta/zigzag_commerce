@@ -56,7 +56,8 @@
                     <div class="panel-body">
                       <label>Publicado por: </label> <%= @product.user.email %><br>
                       <label>Fecha de publicación: </label> <%= localize @product.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
-                      <label>Ubicación: </label> <%= @product.location %>
+                      <label>Ubicación: </label> <%= @product.location %><br>
+                      <label>Stock: </label> <%= @product.quantity %>
                     </div>
                   </div>
 

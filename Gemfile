@@ -56,3 +56,5 @@ gem 'devise', '~> 3.4.0'
 gem 'cloudinary'
 
 gem 'hirb'
+
+gem 'mercadopago-sdk'
