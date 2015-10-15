@@ -9,12 +9,25 @@
 
 <div class="container">
       <div class = "row">
-        <div class="col-md-12"><h3><%= @product.title %></h3></div>
+        <div class="col-md-12"><h2 class="negrita"><%= @product.title %></h2></div>
       </div>
       <div class="row">
         <div class="col-md-4">
             <div class="sidebar-nav-products">
                 <div class="well">
+                  <div style="padding-bottom:1em;">
+                    <% if current_user.try(:admin?) %>
+                      <% if @inappropriate > 0 %>
+                        <% if @inappropriate == 1 %>
+                          <span class="contenido-indebido"><span class="glyphicon glyphicon-remove"></span> Contenido marcado 1 vez como indebido.</span>
+                        <% else %>
+                          <span class="contenido-indebido"><span class="glyphicon glyphicon-remove"></span> Contenido marcado <%= @inappropriate %> veces como indebido.</span>
+                        <% end %>
+                      <% else %>
+                        <span class="contenido-ok"><span class="glyphicon glyphicon-ok"></span> Contenido sin reclamos.</span>
+                      <% end %>
+                    <% end %>
+                  </div>
                   <!-- Imagen principal -->
                   <div style='position:relative'>
                       <% if @pictures.count > 0 %>
@@ -95,7 +108,7 @@
         <div class="col-md-8" style="padding-top:1em;">
           <div class="well">
             <% if user_signed_in? %>
-              <% if current_user.products.where(id: @product.id).first %>
+              <% if current_user.products.where(id: @product.id).first.present? || current_user.try(:admin?) %>
                 <%= link_to "Eliminar producto", @product, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
               <% end %>
             <% end %>

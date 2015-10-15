@@ -1,0 +1,45 @@
+// Place all the styles related to the InappropriateProducts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.row-inappropriate{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: ghostwhite;
+	box-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+
+.row-inappropriate h3 a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.row-inappropriate h3,
+.row-inappropriate h4{
+	margin-top: 10px;
+}
+
+.row-inappropriate > .col-principal{ /* Cada una de las columnas principales con información */
+	height: 200px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.row-inappropriate .row-description{
+	overflow: auto;  /* Scrollbar cuando hay overflow */
+	max-height: 80%; /* Del alto total de la columna, ocupa COMO MUCHO el 80% */
+}
+
+.row-inappropriate .row-description-btn{
+	height: 20%; /* Del alto total de la columna, ocupa un 20% siempre */
+}
+
+.row-inappropriate .row-info-btn{
+	height: 20%;
+	text-align: right;
+}
+
+.row-inappropriate .row-info{
+	padding-bottom: 6px;
+}

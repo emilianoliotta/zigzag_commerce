@@ -1,0 +1,2 @@
+module InappropriateProductsHelper
+end

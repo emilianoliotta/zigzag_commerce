@@ -35,6 +35,12 @@
         <% end %>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user.try(:admin?) %>
+          <li><%= link_to inappropriate_products_index_path do %>
+                <span style="color:Red">Contenido indebido </span><span class="badge"><%= @inappropriates %></span>
+              <% end %>
+          </li>
+        <% end %>
         <% if user_signed_in? %>
           <li><%= link_to "Cargar producto", new_product_path, style:"color:Green" %></li>
           <li role="presentation" class="dropdown">

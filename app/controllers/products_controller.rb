@@ -40,11 +40,15 @@ class ProductsController < ApplicationController
 
     @likes = 0
     @dislikes = 0
+    @inappropriate = 0
     @product.feedbacks.each do |f|
       if f.positive == 1
         @likes+=1
       elsif f.negative == 1
         @dislikes += 1
+      end
+      if f.inappropriate == 1
+        @inappropriate += 1
       end
     end
 
@@ -134,15 +138,20 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = current_user.products.find(params[:id])
-    @pictures = Picture.where(product_id: @product.id)
-    @pictures.each do |pic|
-      Cloudinary::Uploader.destroy(pic.public_id)
-      pic.destroy
+    @product = Product.find(params[:id])
+    if current_user.products.where(id: @product.id).present? || current_user.try(:admin?)
+      @pictures = Picture.where(product_id: @product.id)
+      @pictures.each do |pic|
+        Cloudinary::Uploader.destroy(pic.public_id)
+        pic.destroy
+      end
+      @product.destroy
+      flash[:notice] = "Producto eliminado."
+      redirect_to products_path
+    else
+      flash[:notice] = "Acceso denegado."
+      redirect_to products_path
     end
-    @product.destroy
-    flash[:notice] = "Producto eliminado."
-    redirect_to products_path
   end
 
 
