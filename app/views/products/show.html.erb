@@ -42,7 +42,7 @@
                     <% if @pictures.count > 0 %>
                       <% @pictures.each do |p| %>
                         <div class="col-md-3" style='position:relative'>
-                          <%= link_to image_tag(p.secure_url, alt: "Abrir imagen", class:"secondary-product-image img-rounded"), p.secure_url %>
+                          <%= link_to image_tag(p.secure_url, alt: "Abrir imagen", class:"secondary-product-image img-rounded"), p.secure_url, :target => "_blank" %>
                         </div>
                       <% end %>
                     <% end %>
