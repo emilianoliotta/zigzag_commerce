@@ -24,11 +24,10 @@ class OrdersController < ApplicationController
       order.product_id = product.id
       order.user_id = current_user.id
       if params[:quantity]
-        if product.quantity >= params[:quantity]
+        if product.quantity >= params[:quantity].to_i
           order.quantity = params[:quantity]
         else
-          flash[:alert] = "No hay suficiente stock. Pruebe con una cantidad menor."
-          redirect_to product_path(product)
+          order.quantity = product.quantity
         end
       else
         order.quantity = 1
