@@ -1,3 +1,39 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contenido-indebido{
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #c40000;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+  -webkit-animation-name: animacion-indebido;
+  -webkit-animation-duration: 4s; 
+  -webkit-animation-iteration-count: infinite; 
+  animation-name: animacion-indebido;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animacion-indebido {
+    0%   {color:#c40000}
+    25%  {color:DarkGrey}
+    50%  {color:#c40000}
+    75%  {color:#c40000}
+    100% {color:#c40000}
+}
+
+@keyframes animacion-indebido {
+    0%   {color:#c40000}
+    25%  {color:DarkGrey}
+    50%  {color:#c40000}
+    75%  {color:#c40000}
+    100% {color:#c40000}
+}
+
+.contenido-ok{
+  font-weight: bold;
+  font-size: 2em;
+  color: #009200;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+}
