@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
 
 	validates :title, :description, :price, :quantity, :location, :category_id, :allow_blank => false, :allow_nil => false, :on => :create, presence: true
 
+	default_scope -> { order(created_at: :desc) }
 
 	def self.search(query)
 		consulta1 = where('products.title ilike ? or products.description ilike ?', "%#{query}%", "%#{query}%")
