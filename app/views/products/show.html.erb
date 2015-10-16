@@ -51,10 +51,12 @@
                   <!--Datos del vendedor-->
                   <div class="panel panel-default" style="margin-top:1em;">
                     <div class="panel-heading">
-                      <label>Datos del vendedor</label>
+                      <label>Datos del producto:</label>
                     </div>
                     <div class="panel-body">
-                      <label>Publicado por: </label> <%= @product.user.email %><br>
+                      <% if current_user.try(:admin?) %>
+                        <label>Publicado por: </label> <%= @product.user.email %><br>
+                      <% end %>
                       <label>Fecha de publicación: </label> <%= localize @product.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
                       <label>Ubicación: </label> <%= @product.location %><br>
                       <label>Stock: </label> <%= @product.quantity %>
@@ -109,7 +111,7 @@
         <div class="col-md-8" style="padding-top:1em;">
           <div class="well">
             <% if user_signed_in? %>
-              <% if current_user.products.where(id: @product.id).first.present? || current_user.try(:admin?) %>
+              <% if  current_user.try(:admin?) %>
                 <%= link_to "Eliminar producto", @product, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
               <% end %>
             <% end %>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 	before_action :get_categories, only:[:index]
 
   def new
+    verify_admin
   	@product = Product.new
   	@categories = Category.all
   end
@@ -57,6 +58,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    verify_admin
   	title = params[:product][:title]
     picture1 = params[:product][:picture1]
     picture2 = params[:product][:picture2]
@@ -158,6 +160,13 @@ class ProductsController < ApplicationController
 
   private
 
+
+  def verify_admin
+    if !current_user.try(:admin?)
+      flash[:alert] = "Acceso denegado."
+      redirect_to root_path
+    end
+  end
 
   def get_products
   	@products = Product.all

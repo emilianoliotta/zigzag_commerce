@@ -34,7 +34,7 @@
               </div>
               <div class = "panel-footer text-ellipsis">
                 <div class="text-center">
-                  <% if user_signed_in? && current_user == p.user %>
+                  <% if user_signed_in? && current_user.try(:admin?) %>
                     <%= link_to "Eliminar producto", p, data: { confirm: "¿Estás seguro?" }, :method => :delete , class:"btn btn-danger center-block" %>
                   <% else %>
                     <%= link_to "Añadir al carrito", new_order_path(product: p), class:"btn btn-success center-block" %>
