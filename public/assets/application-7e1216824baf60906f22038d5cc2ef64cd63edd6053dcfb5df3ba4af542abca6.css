@@ -5073,8 +5073,8 @@ a.thumbnail.active {
 .alert {
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border: 0px solid transparent;
+  border-radius: 0px;
 }
 .alert h4 {
   margin-top: 0;
@@ -6850,9 +6850,9 @@ body{
   padding-bottom: 5.5em;
   min-height: 100%;
   position: relative;
-  background-image: url("android2.jpg");
+  background-image: url("back.png");
   /*background-repeat:no-repeat;*/
-  background-size:cover;
+  /*background-size:cover;*/
 }
 
 body > footer{
@@ -6937,6 +6937,11 @@ input {
   overflow: hidden;
 }
 
+.panel-producto-indebido{
+  height: 7em;
+  overflow: hidden;
+}
+
 .panel-personal {
   border-style: none;
   box-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
@@ -6997,6 +7002,63 @@ input {
 #categories{
   overflow: hidden;
 }
+
+/* ==================  PRODUCTOS  =================
+   ================================================ */
+
+.main-product-image{
+  max-width: 100%;
+  max-height: 40em;
+}
+
+.secondary-product-image{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+
+/* ==================    ADMIN    =================
+   ================================================ */
+
+.contenido-indebido{
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #c40000;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+  -webkit-animation-name: animacion-indebido; /* Chrome, Safari, Opera */
+  -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+  -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+  animation-name: animacion-indebido;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animacion-indebido {
+    0%   {color:#c40000}
+    25%  {color:DarkGrey}
+    50%  {color:#c40000}
+    75%  {color:#c40000}
+    100% {color:#c40000}
+}
+
+/* Standard syntax */
+@keyframes animacion-indebido {
+    0%   {color:#c40000}
+    25%  {color:DarkGrey}
+    50%  {color:#c40000}
+    75%  {color:#c40000}
+    100% {color:#c40000}
+}
+
+.contenido-ok{
+  font-weight: bold;
+  font-size: 2em;
+  color: #009200;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+}
 /* cyrillic-ext */
 
 @font-face {
@@ -7030,6 +7092,114 @@ input {
   src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/ATKpv8nLYAKUYexo8iqqrg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+@charset "UTF-8";
+/* line 6, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: ghostwhite;
+  box-shadow: 1px 1px 1px #969696;
+}
+
+/* line 13, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* line 18, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate h3,
+.row-inappropriate h4 {
+  margin-top: 10px;
+}
+
+/* line 23, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate > .col-principal {
+  /* Cada una de las columnas principales con información */
+  height: 200px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/* line 29, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate .row-description {
+  overflow: auto;
+  /* Scrollbar cuando hay overflow */
+  max-height: 80%;
+  /* Del alto total de la columna, ocupa COMO MUCHO el 80% */
+}
+
+/* line 34, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate .row-description-btn {
+  height: 20%;
+  /* Del alto total de la columna, ocupa un 20% siempre */
+}
+
+/* line 38, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate .row-info-btn {
+  height: 20%;
+  text-align: right;
+}
+
+/* line 43, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/inappropriate_products.scss */
+.row-inappropriate .row-info {
+  padding-bottom: 6px;
+}
+/* line 5, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/products.scss */
+.contenido-indebido {
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #c40000;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+  -webkit-animation-name: animacion-indebido;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: animacion-indebido;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animacion-indebido {
+  0% {
+    color: #c40000;
+  }
+  25% {
+    color: DarkGrey;
+  }
+  50% {
+    color: #c40000;
+  }
+  75% {
+    color: #c40000;
+  }
+  100% {
+    color: #c40000;
+  }
+}
+@keyframes animacion-indebido {
+  0% {
+    color: #c40000;
+  }
+  25% {
+    color: DarkGrey;
+  }
+  50% {
+    color: #c40000;
+  }
+  75% {
+    color: #c40000;
+  }
+  100% {
+    color: #c40000;
+  }
+}
+/* line 34, /home/emiliano/rails_projects/zigzag_commerce/app/assets/stylesheets/products.scss */
+.contenido-ok {
+  font-weight: bold;
+  font-size: 2em;
+  color: #009200;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+}
 /*
     Clases relacionadas a la sidebar (barra lateral) de la vista Welcome#index
 */
@@ -7046,6 +7216,12 @@ input {
 	padding-top: 1em;
 	overflow: auto;
 }
+
+.sidebar-nav-products {
+	padding-top: 1em;
+	overflow: visible;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -7060,9 +7236,9 @@ input {
  *
 
 
+ *= require_fontfamily.css 
  *= require_bootstrap
  *= require_custom.css
  *= require_sidebar.css
- *= require_fontfamily.css
  */
 
