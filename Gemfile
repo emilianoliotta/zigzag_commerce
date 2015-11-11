@@ -9,6 +9,8 @@ gem 'rails', '4.2.4'
 #We use PostgreSQL because Heroku doesn't allow SQLite3
 gem 'pg'
 
+gem 'pg_search'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

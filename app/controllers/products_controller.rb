@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if params[:search]
+    if (params[:search] && !params[:search].empty?)
       @products = Product.search(params[:search])
       @search = params[:search]
     else
