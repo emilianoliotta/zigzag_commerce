@@ -16,5 +16,4 @@
  *= require_bootstrap
  *= require_custom.css
  *= require_sidebar.css
- *= require_throbber.css
  */

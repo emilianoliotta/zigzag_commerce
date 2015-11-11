@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-1.11.3.min
 //= require turbolinks
+//= require image-loading
 //= require_tree .
 //= require_bootstrap
 
