@@ -16,7 +16,8 @@ class Product < ActiveRecord::Base
 									:against => [:title, :description, :location], 
 									:using => {
 										:tsearch => {
-											:prefix => true
+											:prefix => true,
+											:dictionary => "spanish"
 										}
 									},
 									:associated_against => {
