@@ -7,9 +7,7 @@ class DummiesController < ApplicationController
   	end
   	@dummy.save
 
-  	respond_to do |format|
-  		format.js{ head :ok}
-  	end
+  	render :nothing => true, status: 200
 
   end
 
