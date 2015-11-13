@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'dummies/on_success'
+
+  get 'dummies/on_failure'
+
+  get 'dummies/on_pending'
+
+  post 'dummies/on_success'
+
+  post 'dummies/on_failure'
+
+  post 'dummies/on_pending'
+
   get 'contact/oferta'
 
   get 'inappropriate_products/index'
@@ -32,6 +44,9 @@ Rails.application.routes.draw do
   match 'orders/:id/increment_quantity' => 'orders#increment_quantity', as: :orders_increment_quantity, via: [:get]
   match 'orders/:id/decrement_quantity' => 'orders#decrement_quantity', as: :orders_decrement_quantity, via: [:get]
   match 'orders/:id/delete_all' => 'orders#delete_all', as: :orders_delete_all, via: [:get]
+  match 'orders/:id/checkout' => 'orders#checkout', as: :orders_checkout, via: [:get]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -49,45 +49,9 @@
           </div>
 
           <% if @orders.any? %>
-            <label style="padding-top:0.5em;">Dirección:</label>
+            <label style="padding-top:0.3em;">Mercado Pago:</label>
             <div class="row">
-              <form class="form-inline">
-                <div class="col-md-12">
-                <div class="form-group">
-                  <label class="sr-only"></label>
-                  <input type="text" class="form-control" placeholder="Calle">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" ></label>
-                  <input type="text" class="form-control" placeholder="Numero">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" ></label>
-                  <input type="text" class="form-control" placeholder="Piso">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" ></label>
-                  <input type="text" class="form-control" placeholder="Depto">
-                </div>
-                </div>
-              </form>
-            </div>
-
-            <label style="padding-top:0.3em;">Medio de pago:</label>
-            <div class="row">
-              <div class="col-md-4">
-                <select class="form-control">
-                  <option>Tarjeta de credito</option>
-                  <option>Transferencia bancaria</option>
-                  <option>Rapipago</option>
-                  <option>PayPal</option>
-                  <option>Bitcoins</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row">
-              <a class="btn btn-default pull-right" href="#" role="button">Completar compra</a>
+              <%= link_to "Completar compra", orders_checkout_path, class:"btn btn-default pull-right" %>
             </div>
           <% end %>
 

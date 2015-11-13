@@ -15,3 +15,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore MP configuration
+#config/initializers/ZigzagCommerce.rb
+
+# Ignore Cloudinary configuration file
+#config/locales/cloudinary.yml
+
+# Ignore application configuration files
+#config/locales/application.rb
+#config/locales/secrets.yml
