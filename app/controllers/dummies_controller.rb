@@ -1,4 +1,7 @@
 class DummiesController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+
   def on_success
   	@dummy = Dummy.new
 

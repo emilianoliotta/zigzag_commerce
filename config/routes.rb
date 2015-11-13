@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'dummies/on_success'
-
-  get 'dummies/on_failure'
-
-  get 'dummies/on_pending'
-
   post 'dummies/on_success'
 
   post 'dummies/on_failure'
