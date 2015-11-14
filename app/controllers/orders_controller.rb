@@ -10,14 +10,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def checkout
-    preference_data = {"items"=> [ "title"=> "compra", "quantity"=> 1, "unit_price"=> 10.2, "currency_id"=> "ARS" ], "back_urls"=>  {"success"=> "https://zigzag-commerce.herokuapp.com", "pending"=> "https://zigzag-commerce.herokuapp.com", "failure" => "https://zigzag-commerce.herokuapp.com" }}
-    @preference = MP_CLIENT.create_preference(preference_data)
-    
-  end
-
-  ##Metodos para recibir notificaciones y actualizar la preferencia (o tabla aparte)
-
   def new
     current_user.orders.each do |o|
       if o.product == Product.find(params[:product])

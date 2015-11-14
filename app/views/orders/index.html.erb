@@ -49,10 +49,9 @@
           </div>
 
           <% if @orders.any? %>
-            <label style="padding-top:0.3em;">Mercado Pago:</label>
-            <div class="row">
-              <%= link_to "Completar compra", orders_checkout_path, class:"btn btn-default pull-right" %>
-            </div>
+          <div class="pull-right" id="new-sale-button">
+            <a href="sales/new" style="display: block; text-decoration:none;"><span style="color:black; font-weight:bold; font-size:1.2em;">Continuar compra con MercadoPago </span><%= image_tag "logo-mp.png", height: "25em" %></a>
+          </div>
           <% end %>
 
         </div>
