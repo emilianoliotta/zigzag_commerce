@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MpKeyTest < ActiveSupport::TestCase
+class MpTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

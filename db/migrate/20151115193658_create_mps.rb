@@ -1,6 +1,6 @@
-class CreateMpKeys < ActiveRecord::Migration
+class CreateMps < ActiveRecord::Migration
   def change
-    create_table :mp_keys do |t|
+    create_table :mps do |t|
       t.string :client_id
       t.string :client_secret
       t.string :public_key

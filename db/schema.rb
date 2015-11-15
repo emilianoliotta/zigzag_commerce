@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115192301) do
+ActiveRecord::Schema.define(version: 20151115193917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20151115192301) do
   end
 
   create_table "mp_keys", force: :cascade do |t|
+    t.string   "client_id"
+    t.string   "client_secret"
+    t.string   "public_key"
+    t.string   "access_token"
+    t.boolean  "sandbox"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "mps", force: :cascade do |t|
     t.string   "client_id"
     t.string   "client_secret"
     t.string   "public_key"
