@@ -62,6 +62,9 @@ class SalesController < ApplicationController
 			sale.save
 		elsif params[:topic] == "payment"
 			payment = MP_CLIENT.get_payment_info(params[:id].to_s)
+			if payment['status'] == "404"
+				payment = MP_CLIENT.get("/collections/notifications/"+params[:id].to_s)
+				
 			sale = Sale.find(payment['response']['collection']['external_reference'].to_i)
 			sale.payment_id = payment['response']['collection']['id'].to_s
 			sale.save
