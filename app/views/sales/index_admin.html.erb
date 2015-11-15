@@ -3,19 +3,23 @@
 		<% @sales.each do |s| %>
 			<% status = s.status.to_s %>
 			<% transaction_amount = s.transaction_amount.to_s %>
+			<% if status == "rejected"%>
+				<%status = "RECHAZADO"%>
+				<div class="panel panel-danger">
+			<% end %>
 			<% if status == "pending"%>
 				<%status = "PENDIENTE"%>
 				<div class="panel panel-info">
 			<% end %>
 			<% if status == "cancelled"%>
 				<%status = "CANCELADO"%>
-				<div class="panel panel-danger">
+				<div class="panel panel-warning">
 			<% end %>
 			<% if status == "approved"%>
 				<%status = "APROBADO"%>
 				<div class="panel panel-success">
 			<% end %>
-			<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE")%>
+			<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE") && (status != "RECHAZADO")%>
 				<div class="panel panel-default">
 			<% end %>
 			  <div class="panel-heading">
