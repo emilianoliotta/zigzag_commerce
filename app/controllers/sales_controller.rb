@@ -60,6 +60,7 @@ class SalesController < ApplicationController
     	redirect_to root_path
     else
     	flash[:notice] = "Sus datos fueron guardados. Ahora puede completar la compra."
+      current_user.orders.destroy_all
     end
   end
 
