@@ -25,10 +25,10 @@
 		    Fecha de creacion: <%= localize s.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
 		    <table class="table table-condensed">
 		    	<tr>
-					  <th id="sale-th-center">Precio unitario</th>
-					  <th id="sale-th-center">Cantidad</th>
-					  <th id="sale-th-center">Nombre (ID)</th>
-					  <th id="sale-th-center">Precio total</th>
+					  <th style="text-align: center;">Precio unitario</th>
+					  <th style="text-align: center;">Cantidad</th>
+					  <th style="text-align: center;">Nombre (ID)</th>
+					  <th style="text-align: center;">Precio total</th>
 					</tr>
 		    	<%= simple_format(s.description, {}, sanitize: false)%>
 		    </table>
