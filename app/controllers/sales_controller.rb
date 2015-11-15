@@ -57,18 +57,21 @@ class SalesController < ApplicationController
   def notifications
 		if params[:topic] == "merchant_order"
 			merchant_order = MP_CLIENT.get("/merchant_orders/"+params[:id].to_s)
-			sale = Sale.find(merchant_order['response']['external_reference'].to_i)
-			sale.merchant_id = merchant_order['response']['id'].to_s
-			sale.save
+			sale = Sale.where(id: merchant_order['response']['external_reference'].to_i).first
+			if !sale.nil?
+				sale.merchant_id = merchant_order['response']['id'].to_s
+				sale.save
+			end
 		elsif params[:topic] == "payment"
 			payment = MP_CLIENT.get_payment_info(params[:id].to_s)
 			if payment['status'] == "404"
 				payment = MP_CLIENT.get("/collections/notifications/"+params[:id].to_s)
 			end
-
-			sale = Sale.find(payment['response']['collection']['external_reference'].to_i)
-			sale.payment_id = payment['response']['collection']['id'].to_s
-			sale.save
+			sale = Sale.where(id: payment['response']['collection']['external_reference'].to_i).first
+			if !sale.nil?
+				sale.payment_id = payment['response']['collection']['id'].to_s
+				sale.save
+			end
 		end
 
   	render :nothing => true, status: 200
