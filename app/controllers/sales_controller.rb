@@ -80,6 +80,8 @@ class SalesController < ApplicationController
 			sale = Sale.where(id: payment['response']['collection']['external_reference'].to_i).first
 			if !sale.nil?
 				sale.payment_id = payment['response']['collection']['id'].to_s
+        sale.status = payment['response']['collection']['status'].to_s
+        sale.transaction_amount = "$" + payment['response']['collection']['transaction_amount'].to_s
 				sale.save
 			end
 		end
