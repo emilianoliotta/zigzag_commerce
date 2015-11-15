@@ -1,4 +1,23 @@
-<h3>Para completar la compra presione el boton 'COMPRAR'</h3>
-<a href="<%=@preference['response']['sandbox_init_point']%>" name="MP-Checkout" class="btn btn-success">COMPRAR</a>
-<script type="text/javascript" src="//resources.mlstatic.com/mptools/render.js"></script>
-
+<div class="container">
+	<h2 style="margin-bottom:1em; padding-bottom: 0">Detalles de la compra:</h2>
+	<table class="table table-bordered" style="margin-top: 0; padding-top: 0;">
+		<tr>
+		  <th>Precio unitario</th>
+		  <th>Cantidad</th>
+		  <th>Nombre (ID)</th>
+		  <th>Precio total</th>
+		</tr>
+		<%= simple_format(@sale.description, {}, sanitize: false)%>
+		<tr>
+		  <td></td>
+		  <td></td>
+		  <th>Total a pagar</th>
+		  <th>$<%= @sum %></th>
+		</tr>
+	</table>
+	<h3 style="margin-bottom:0">Para completar la compra presione el boton 'COMPRAR'</h3>
+	<div class="pull-right">
+		<a href="<%=@preference['response']['sandbox_init_point']%>" name="MP-Checkout" class="orange-ar-m-sq-arall">COMPRAR</a>
+	</div>
+	<script type="text/javascript" src="//resources.mlstatic.com/mptools/render.js"></script>
+</div>

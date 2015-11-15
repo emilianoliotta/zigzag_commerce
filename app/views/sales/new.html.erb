@@ -1,29 +1,61 @@
 <div class="container">
-  <span style="color:red; display:block;">Todos los campos son obligatorios.</span>
+	<div class="text-center" style="padding-top:1em; padding-bottom:1em">
+		<span style="color:black; font-weight:bold; font-size:1.6em;">Compra con MercadoPago </span><%= image_tag "logo-mp.png", height: "32em" %>
+	</div>
+
   <%= form_for @sale do |f| %>
-    <div class="form-group col-md-6">
-      <%= f.text_field :first_name, placeholder: "Nombre", required: "required", class: "form-control", maxlength: 255 %>
+	<div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
+    	<span style="color:red; display:block;">Todos los campos son obligatorios.</span>
+    	<%= f.text_field :first_name, placeholder: "Nombre", required: "required", class: "form-control", maxlength: 255 %>
     </div>
-    <div class="form-group">
-      <%= f.text_field :last_name, placeholder: "Apellido", required: "required", class: "form-control", maxlength: 255 %>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
+    	<%= f.text_field :last_name, placeholder: "Apellido", required: "required", class: "form-control", maxlength: 255 %>
     </div>
-    <label style="font-size: 0.5em;">Telefono:</label>
-    <div class="form-group">
-      <%= f.number_field :area_code, placeholder: "Código de area", required: "required", class: "form-control" %>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
+  		<label>Teléfono:</label>
+  	</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
+    	<div class="col-xs-4 col-md-4">
+      	<%= f.number_field :area_code, placeholder: "Código de area", required: "required", class: "form-control" %>
+    	</div>
+   		<div class="col-xs-8 col-md-8">
+      	<%= f.number_field :number, placeholder: "Telefono", required: "required", class: "form-control" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.number_field :number, placeholder: "Telefono", required: "required", class: "form-control" %>
-    </div>
-    <label style="font-size: 0.5em;">Dirección:</label>
-    <div class="form-group">
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
+    <label>Dirección:</label>
       <%= f.text_field :zip_code, placeholder: "Código postal", required: "required", class: "form-control", maxlength: 30 %>
     </div>
-    <div class="form-group">
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
       <%= f.text_field :street, placeholder: "Calle", required: "required", class: "form-control", maxlength: 255 %>
     </div>
-    <div class="form-group">
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6">
       <%= f.number_field :street_number, placeholder: "Número", required: "required", class: "form-control" %>
     </div>
-    <div class="form-group"><%= f.submit "Continuar compra", class:"btn btn-default pull-right" %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6"><%= f.submit "Continuar compra", class:"btn btn-default pull-right" %></div>
+  </div>
   <% end %>
 </div>

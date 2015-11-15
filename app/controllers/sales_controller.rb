@@ -4,6 +4,13 @@ class SalesController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:notifications]
 
   def index
+    @sales = current_user.sales.order(id: :desc)
+    @sales.each do |s|
+      if s.payment_id.nil?
+        s.destroy
+      end
+    end
+    @sales = current_user.sales.order(id: :desc)
   end
 
   def new
@@ -16,11 +23,11 @@ class SalesController < ApplicationController
 
   	orders = current_user.orders
   	suma = 0
-  	description = "Venta: <br> "
+  	description = ""
     
     orders.each do |o|
       suma += o.product.price * o.quantity
-      description += "[ $" + (o.product.price * o.quantity).to_s + " ]  -> " + o.quantity.to_s + " x " + o.product.title.to_s + "(ID: " + o.product.id.to_s + ") <br>"
+      description += "<tr><td id='sale-td-cell'>$" + o.product.price.to_s + "</td><td id='sale-td-cell'>" + o.quantity.to_s + "</td><td id='sale-td-cell'>" + o.product.title.to_s + "(" + o.product.id.to_s + ") </td><td id='sale-td-cell'>$" + (o.product.price * o.quantity).to_s + "</td></tr>"
     end
 
     @sale.description = description
@@ -45,6 +52,8 @@ class SalesController < ApplicationController
     @sale.preference_id = @preference['response']['id']
 
     @sale.save
+
+    @sum = suma
 
     if @sale.errors.any?
     	flash[:alert] = "Hubo un error con la compra, vuelva a intentarlo luego. (Si el error continúa tome contacto con ZigZag Commerce)."
