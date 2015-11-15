@@ -4,15 +4,18 @@
 		<% status = payment['response']['collection']['status'].to_s %>
 		<% transaction_amount = "$" + payment['response']['collection']['transaction_amount'].to_s %>
 		<% if status == "pending"%>
+			<%status = "PENDIENTE"%>
 			<div class="panel panel-info">
 		<% end %>
 		<% if status == "cancelled"%>
+			<%status = "CANCELADO"%>
 			<div class="panel panel-danger">
 		<% end %>
 		<% if status == "approved"%>
+			<%status = "APROBADO"%>
 			<div class="panel panel-success">
 		<% end %>
-		<% if (status != "approved") && (status != "cancelled") && (status != "pending")%>
+		<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE")%>
 			<div class="panel panel-default">
 		<% end %>
 		  <div class="panel-heading">
@@ -21,9 +24,17 @@
 		  <div class="panel-body">
 		    Fecha de creacion: <%= localize s.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
 		    <table class="table table-condensed">
+		    	<tr>
+					  <th>Precio unitario</th>
+					  <th>Cantidad</th>
+					  <th>Nombre (ID)</th>
+					  <th>Precio total</th>
+					</tr>
 		    	<%= simple_format(s.description, {}, sanitize: false)%>
 		    </table>
 		  </div>
 		</div>
 	<% end %>
+<% else %>
+	<h2>No tienes ninguna compra. ¿Qué estás esperando?</h2>
 <% end %>
