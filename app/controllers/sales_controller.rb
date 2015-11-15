@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
 
-	before_action :authenticate_user!, only: [:index, :new, :create, :show]
+	before_action :authenticate_user!, only: [:index, :index_admin, :new, :create, :show]
 	skip_before_action :verify_authenticity_token, only: [:notifications]
 
   def index
@@ -11,6 +11,20 @@ class SalesController < ApplicationController
       end
     end
     @sales = current_user.sales.order(id: :desc)
+  end
+
+  def index_admin
+    verify_admin
+    @sales = Sale.all.order(id: :desc)
+    @sales.each do |s|
+      if s.payment_id.nil?
+        s.payment_id = "NULO"
+        s.status = "Unknown"
+        s.transaction_amount = "Unknown"
+        s.save
+      end
+    end
+    @sales = Sale.all.order(id: :desc)
   end
 
   def new
@@ -59,8 +73,8 @@ class SalesController < ApplicationController
     	flash[:alert] = "Hubo un error con la compra, vuelva a intentarlo luego. (Si el error continúa tome contacto con ZigZag Commerce)."
     	redirect_to root_path
     else
-    	flash[:notice] = "Sus datos fueron guardados. Ahora puede completar la compra."
       current_user.orders.destroy_all
+    	flash[:notice] = "Sus datos fueron guardados. Ahora puede completar la compra."
     end
   end
 
@@ -98,6 +112,13 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(:first_name, :last_name, :area_code, :number, :zip_code, :street, :street_number)
+  end
+
+  def verify_admin
+    if !current_user.try(:admin?)
+      flash[:alert] = "Acceso denegado."
+      redirect_to root_path
+    end
   end
 
 end

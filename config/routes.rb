@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post 'sales/notifications'
   get 'sales/notifications'
+  get 'sales/index_admin'
 
   get 'contact/oferta'
 

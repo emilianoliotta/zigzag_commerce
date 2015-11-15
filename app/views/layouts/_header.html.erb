@@ -43,6 +43,7 @@
         <% end %>
         <% if user_signed_in? %>
           <% if current_user.try(:admin?) %>
+            <li><%= link_to "Ventas", sales_index_admin_path, style:"color:Blue" %></li>
             <li><%= link_to "Cargar producto", new_product_path, style:"color:Green" %></li>
           <% end %>
           <li role="presentation" class="dropdown">

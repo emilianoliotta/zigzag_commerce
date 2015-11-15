@@ -1,42 +1,43 @@
-<% if @sales.size > 0  %>
-	<% @sales.each do |s| %>
-		<% payment = MP_CLIENT.get_payment_info(s.payment_id) %>
-		<% status = payment['response']['collection']['status'].to_s %>
-		<% transaction_amount = "$" + payment['response']['collection']['transaction_amount'].to_s %>
-		<% if status == "pending"%>
-			<%status = "PENDIENTE"%>
-			<div class="panel panel-info">
+<div class="container">
+	<% if @sales.size > 0  %>
+		<% @sales.each do |s| %>
+			<% status = s.status.to_s %>
+			<% transaction_amount = s.transaction_amount.to_s %>
+			<% if status == "pending"%>
+				<%status = "PENDIENTE"%>
+				<div class="panel panel-info">
+			<% end %>
+			<% if status == "cancelled"%>
+				<%status = "CANCELADO"%>
+				<div class="panel panel-danger">
+			<% end %>
+			<% if status == "approved"%>
+				<%status = "APROBADO"%>
+				<div class="panel panel-success">
+			<% end %>
+			<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE")%>
+				<div class="panel panel-default">
+			<% end %>
+			  <div class="panel-heading">
+			    <h3 class="panel-title">ID de pago: <%= s.payment_id %> - Estado: <% if status == "APROBADO" %><span style="background-color: Green; color: White;"><%end%><%=status%><% if status == "APROBADO" %></span><%end%> - Monto de compra: <%= transaction_amount %></h3>
+			  </div>
+			  <div class="panel-body">
+			    Fecha de creacion: <%= localize s.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
+			    <table class="table table-condensed">
+			    	<tr>
+						  <th style="text-align: center;">Precio unitario</th>
+						  <th style="text-align: center;">Cantidad</th>
+						  <th style="text-align: center;">Nombre (ID)</th>
+						  <th style="text-align: center;">Precio total</th>
+						</tr>
+			    	<%= simple_format(s.description, {}, sanitize: false)%>
+			    </table>
+			  </div>
+			</div>
 		<% end %>
-		<% if status == "cancelled"%>
-			<%status = "CANCELADO"%>
-			<div class="panel panel-danger">
-		<% end %>
-		<% if status == "approved"%>
-			<%status = "APROBADO"%>
-			<div class="panel panel-success">
-		<% end %>
-		<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE")%>
-			<div class="panel panel-default">
-		<% end %>
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Id de pago: <%= s.payment_id.to_s %> - Estado: <%= status %> - Monto de compra: <%= transaction_amount %></h3>
-		  </div>
-		  <div class="panel-body">
-		    Fecha de creacion: <%= localize s.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
-		    <table class="table table-condensed">
-		    	<tr>
-					  <th style="text-align: center;">Precio unitario</th>
-					  <th style="text-align: center;">Cantidad</th>
-					  <th style="text-align: center;">Nombre (ID)</th>
-					  <th style="text-align: center;">Precio total</th>
-					</tr>
-		    	<%= simple_format(s.description, {}, sanitize: false)%>
-		    </table>
-		  </div>
+	<% else %>
+		<div class="container">
+			<div class="text-center"><h2>No existen compras. <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></h2></div>
 		</div>
 	<% end %>
-<% else %>
-	<div class="container">
-		<div class="text-center"><h2>No tienes ninguna compra. ¿Qué estás esperando?</h2></div>
-	</div>
-<% end %>
+</div>
