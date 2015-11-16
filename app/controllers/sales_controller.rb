@@ -9,12 +9,12 @@ class SalesController < ApplicationController
       if s.preference_id.nil?
         s.destroy
       end
-      if s.payment_id.nil?
-        s.payment_id = "NULO"
-        s.status = "Unknown"
-        s.transaction_amount = "Unknown"
-        s.save
-      end
+      #if s.payment_id.nil?
+      #  s.payment_id = "NULO"
+      #  s.status = "Unknown"
+      #  s.transaction_amount = "Unknown"
+      #  s.save
+      #end
     end
     @sales = current_user.sales.order(created_at: :desc)
   end
