@@ -6,12 +6,14 @@ class SalesController < ApplicationController
   def index
     @sales = current_user.sales.order(id: :desc)
     @sales.each do |s|
-      ##ELIMINAR
-      s.init_point = MP_CLIENT.get_preference(s.preference_id.to_s)['response']['init_point']
-      s.sandbox_init_point = MP_CLIENT.get_preference(s.preference_id.to_s)['response']['sandbox_init_point']
-      ##########
-      if s.payment_id.nil?
+      if s.preference_id.nil?
         s.destroy
+      end
+      if s.payment_id.nil?
+        s.payment_id = "NULO"
+        s.status = "Unknown"
+        s.transaction_amount = "Unknown"
+        s.save
       end
     end
     @sales = current_user.sales.order(id: :desc)
