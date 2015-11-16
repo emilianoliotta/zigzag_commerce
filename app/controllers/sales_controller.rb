@@ -64,6 +64,8 @@ class SalesController < ApplicationController
     	desc_truncated600 = description
     end
 
+    @sale.save
+
 		preference_data = {"items"=> [ "title"=> "Compra en Zigzag Commerce", "quantity"=> 1, "unit_price"=> suma , "currency_id"=> "ARS", "description"=> desc_truncated256 ],"payer"=> {"name" => @sale.first_name, "surname" => @sale.last_name, "email" => @sale.user.email, "phone" => {"area_code" => @sale.area_code, "number" => @sale.number}, "address" => {"zip_code" =>  @sale.zip_code, "street_name" => @sale.street, "street_number" => @sale.street_number.to_i}},"back_urls"=>  {"success"=> "https://zigzag-commerce.herokuapp.com/sales", "pending"=> "https://zigzag-commerce.herokuapp.com/sales", "failure" => "https://zigzag-commerce.herokuapp.com/sales" }, "aditional_info" => desc_truncated600, "external_reference" => @sale.id.to_s }
 		preference = MP_CLIENT.create_preference(preference_data)
 
