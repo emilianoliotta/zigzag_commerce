@@ -3,27 +3,27 @@
 		<% @sales.each do |s| %>
 			<% status = s.status.to_s %>
 			<% transaction_amount = s.transaction_amount.to_s %>
-			<% if status == "rejected"%>
-				<%status = "RECHAZADO"%>
+
+			<% case status %>
+			<% when "rejected" %>
+				<% status = "RECHAZADO" %>
 				<div class="panel panel-danger">
-			<% end %>
-			<% if status == "pending"%>
+			<% when "pending" %>
 				<%status = "PENDIENTE"%>
 				<div class="panel panel-info">
-			<% end %>
-			<% if status == "cancelled"%>
+			<% when "cancelled" %>
 				<%status = "CANCELADO"%>
 				<div class="panel panel-warning">
-			<% end %>
-			<% if status == "approved"%>
+			<% when "approved" %>
 				<%status = "APROBADO"%>
 				<div class="panel panel-success">
-			<% end %>
-			<% if (status != "APROBADO") && (status != "CANCELADO") && (status != "PENDIENTE") && (status != "RECHAZADO")%>
+			<% else %>
 				<div class="panel panel-default">
+				<% status = status.upcase %>
 			<% end %>
+
 			  <div class="panel-heading">
-			    <h3 class="panel-title">ID de pago: <%= s.payment_id %> - Estado: <% if status == "APROBADO" %><span style="background-color: Green; color: White;"><%end%><%=status%><% if status == "APROBADO" %></span><%end%> - Monto de compra: <%= transaction_amount %></h3>
+			    <h3 class="panel-title">ID de pago: <%=s.payment_id.to_s%> - Estado: <% if status == "APROBADO" %><span style="background-color: Green; color: White;"><%end%><%=status%><% if status == "APROBADO" %></span><%end%> - Monto de compra: <%= transaction_amount %></h3>
 			  </div>
 			  <div class="panel-body">
 			    Fecha de creacion: <%= localize s.created_at.in_time_zone('Buenos Aires'), format: :long %><br>
