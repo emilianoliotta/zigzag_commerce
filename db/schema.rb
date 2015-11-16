@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115200151) do
+ActiveRecord::Schema.define(version: 20151116200159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20151115200151) do
     t.string   "merchant_id"
     t.string   "status"
     t.string   "transaction_amount"
+    t.string   "init_point"
+    t.string   "sandbox_init_point"
   end
 
   create_table "users", force: :cascade do |t|
