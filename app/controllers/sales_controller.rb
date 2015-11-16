@@ -4,7 +4,7 @@ class SalesController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:notifications]
 
   def index
-    @sales = current_user.sales.order(id: :desc)
+    @sales = current_user.sales
     @sales.each do |s|
       if s.preference_id.nil?
         s.destroy
@@ -16,7 +16,7 @@ class SalesController < ApplicationController
         s.save
       end
     end
-    @sales = current_user.sales.order(id: :desc)
+    @sales = current_user.sales.order(created_at: :desc)
   end
 
   def index_admin
@@ -30,7 +30,7 @@ class SalesController < ApplicationController
         s.save
       end
     end
-    @sales = Sale.all.order(id: :desc)
+    @sales = Sale.all.order(updated_at: :desc)
   end
 
   def new
