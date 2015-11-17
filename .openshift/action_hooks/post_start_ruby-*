@@ -1,0 +1,2 @@
+#!/bin/bash
+cd ${OPENSHIFT_REPO_DIR} && bundle exec rake sunspot:solr:start RAILS_ENV=production
