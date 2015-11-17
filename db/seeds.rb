@@ -22,3 +22,20 @@ c12 = Category.create(name: "Libros y revistas")
 c13 = Category.create(name: "Ropa y accesorios")
 c14 = Category.create(name: "Salud y belleza")
 c15 = Category.create(name: "Otros")
+
+comprador1 = User.find_or_create_by(email: "comprador1@mail.com") do |user|
+	user.password = "comprador1"
+	user.password_confirmation = "comprador1"
+	user.created_at = "2015-11-16 15:00:00"
+end
+
+admin = User.find_or_create_by(email: "administrador@mail.com") do |user|
+	user.password = "password_administrador"
+	user.password_confirmation = "password_administrador"
+	user.admin = true
+	user.created_at = "2015-11-16 15:00:00"
+end
+
+emi = User.find_or_create_by(email: "liotta.emiliano@gmail.com") do |user|
+	user.admin = true
+end
