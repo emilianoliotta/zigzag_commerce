@@ -12,7 +12,12 @@ class ProductsController < ApplicationController
 
   def index
     if (params[:search] && !params[:search].empty?)
-      @products = Product.search(params[:search])
+      #@products = Product.search(params[:search])
+      @products = Product.search do
+                    fulltext params[:search] do
+                      phrase_fields :title => 2.0
+                    end
+                  end
       @search = params[:search]
     else
       @products = Product.all
