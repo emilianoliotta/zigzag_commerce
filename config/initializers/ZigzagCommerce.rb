@@ -1,13 +1,13 @@
 # Configuración de cliente de MercadoPago
 	# Credenciales de cliente
 
-		CLIENT_ID = Mp.find(1).client_id.to_s
-		CLIENT_SECRET = Mp.find(1).client_secret.to_s
+		CLIENT_ID = "7233176831657271"
+		CLIENT_SECRET = "kXcwA8gBQfHWsPoaCivx8oJzwH49x3wx"
 
 	# Credenciales de modo Sandbox
 
-		PUBLIC_KEY = Mp.find(1).public_key.to_s
-		ACCESS_TOKEN = Mp.find(1).access_token.to_s
+		PUBLIC_KEY = "TEST-04b51501-7da4-4183-a6bb-92a43914928d"
+		ACCESS_TOKEN = "TEST-7233176831657271-111119-8c79dd636363e238c9442b16e284b4ed__LB_LA__-160276862"
 
 	# Cliente de MercadoPagorai
 
