@@ -7,15 +7,15 @@ default: &default
 
 development:
   <<: *default
-  database: desarrollozz_db
+  database: zigzagcommerce
 
 test:
   <<: *default
-  database: pruebazz_db
+  database: zigzagcommerce
 
 production:
   <<: *default
-  database: produccionzz_db
+  database: zigzagcommerce
 
 
 
