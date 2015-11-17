@@ -10,27 +10,19 @@ class Product < ActiveRecord::Base
 
 	default_scope -> { order(created_at: :desc) }
 
-	#include PgSearch
+	include PgSearch
 
-	#pg_search_scope :search, 
-	#								:against => [:title, :description, :location], 
-	#								:using => {
-	#									:tsearch => {
-	#										:prefix => true,
-	#										:dictionary => "spanish"
-	#									}
-	#								},
-	#								:associated_against => {
-   # 								:category => :name
-  	#							}
-
-
-  searchable do
-    text :title, :description, :location
-    text :categories do
-      categories.map { |category| category.name }
-    end
-  end
+	pg_search_scope :search, 
+									:against => [:title, :description, :location], 
+									:using => {
+										:tsearch => {
+											:prefix => true,
+											:dictionary => "spanish"
+										}
+									},
+									:associated_against => {
+    								:category => :name
+  								}
 
 	#def self.search(query)
 	#	consulta1 = where('products.title ilike ? or products.description ilike ?', "%#{query}%", "%#{query}%")
