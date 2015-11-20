@@ -24,6 +24,13 @@ class Product < ActiveRecord::Base
   #  								:category => :name
   #								}
 
+  searchable do
+    text :title, :description, :location
+    text :category do
+      category.name
+    end
+  end
+
 	#def self.search(query)
 	#	consulta1 = where('products.title ilike ? or products.description ilike ?', "%#{query}%", "%#{query}%")
 	#	consulta2 = joins(:category).where("categories.name ilike ?", "%#{query}%")
