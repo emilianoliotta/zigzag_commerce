@@ -50,6 +50,4 @@ gem 'mercadopago-sdk'
 
 gem 'sunspot_rails'
 
-group :development, :test do
-  gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-end
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
