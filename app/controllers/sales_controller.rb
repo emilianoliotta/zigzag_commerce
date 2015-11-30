@@ -76,6 +76,13 @@ class SalesController < ApplicationController
 
     @sale.save
 
+    orders.each do |o|
+      if o.product.quantity >= o.quantity
+        o.product.quantity -= o.quantity
+        o.product.save
+      end
+    end    
+
     @sum = suma
 
     if @sale.errors.any?
